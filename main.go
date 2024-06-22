@@ -69,17 +69,11 @@ func readBytesFile(fileName string) ([]byte, error) {
 	for scanner.Scan() {
 		b := scanner.Bytes()
 		//fmt.Println(b)
+		//fmt.Println("bcache:", bcache)
 
-		t := 0
-		if len(bcache) > 1 {
-			if len(bcache[len(bcache)-1]) == 0 || len(b) == 0 {
-				t++
-			}
+		if len(bcache) > 0 {
+			content = append(content, 10)
 		} else if len(b) == 0 {
-			t++
-		}
-
-		for range t {
 			content = append(content, 10)
 		}
 
